@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -8,22 +8,26 @@ import { HomeComponent } from './pages/home/home.component';
 import { AppRouterModule } from './app-router.module';
 import { FormsModule } from '@angular/forms';
 
-
+import { PimengModule } from './shared/pimeng/pimeng.module'
+import { FiltroPipe } from './pages/control/pipe/filtro.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ControlComponent,
-    HomeComponent
+    HomeComponent,
+    FiltroPipe,
   ],
   imports: [
     BrowserModule,
     AppRouterModule,
     HttpClientModule,
     FormsModule,
-    
+    PimengModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  exports:[ControlComponent],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

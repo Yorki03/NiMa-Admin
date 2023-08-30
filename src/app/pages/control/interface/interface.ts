@@ -1,8 +1,6 @@
-export interface SelecProduct {
-   id_producto: string
-}
 
 export interface SelecPedido {
-    id_pedido: string
+    ok: boolean,
+    msg: string
 }
    

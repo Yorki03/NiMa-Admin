@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map } from 'rxjs';
 import { Pedidos } from 'src/app/pages/control/models/pedidios';
 import { handleError } from '../functions/http-error';
-import { Producto } from 'src/app/pages/control/models/producto';
-import { SelecPedido, SelecProduct } from 'src/app/pages/control/interface/interface';
+
+import { SelecPedido } from 'src/app/pages/control/interface/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +20,9 @@ export class PedidosService {
     );
   }
 
-  getProductoPedido(filtro: SelecProduct): Observable<Producto[]>{
-    return this.http.get<Producto[]>(`http://localhost:3100/producto/${filtro.id_producto}`).pipe(
-      map((res) => res.map((producto) => new Producto(producto))),
-      catchError(handleError)
-    );
-  }
-
-  deletePerdidpUser(filtro: SelecPedido): Observable<Pedidos[]>{
-    return this.http.delete<Pedidos[]>(`http://localhost:3100/borrar-pedido/${filtro.id_pedido}`).pipe(
-      map((res) => res.map((pedido) => new Pedidos(pedido))),
+  deletePerdidpUser(filtro: number){
+    return this.http.delete<SelecPedido>(`http://localhost:3100/borrar-pedido/${filtro}`).pipe(
+      map(res => res.ok),
       catchError(handleError)
     )
   }

@@ -5,6 +5,7 @@ export class Pedidos{
     telefono: string;
     direccion: string;
     id_producto: string;
+    imagen: string;
 
     constructor(data: any){
         this.id_pedido = data.id_pedido;
@@ -13,6 +14,7 @@ export class Pedidos{
         this.telefono = data.telefono;
         this.direccion = data.direccion;
         this.id_producto = data.id_producto;
+        this.imagen = data.imagen
     }
 
     get idPedidio(){ return this.id_pedido; }
@@ -21,5 +23,6 @@ export class Pedidos{
     get Telefono(){ return this.telefono; }
     get Direccion(){ return this.direccion; }
     get idProducto(){ return this.id_producto; }
+    get url(){return '../../../assets/productos/'+ this.imagen + '.jpg'}
 
 }
